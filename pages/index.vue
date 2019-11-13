@@ -8,32 +8,32 @@
       <h2 class="subtitle">
         Carlijn Treep: Portfolio Site
       </h2>
-      <!-- <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div> -->
+      <ProjectPreview :project="project" />
     </div>
   </div>
 </template>
 
 <script>
 // import Logo from '~/components/Logo.vue'
+import ProjectPreview from '@/components/Projects/ProjectPreview.vue'
 
 export default {
   components: {
-    // Logo
+    ProjectPreview
+  },
+  data () {
+    return {
+      project: {
+        brand: 'Nijhof',
+        img:
+          'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
+        type: 'Etalages',
+        skillset: 'Styling',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
+        id: '/projects/1'
+      }
+    }
   }
 }
 </script>

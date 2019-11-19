@@ -19,7 +19,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap'
+          'https://fonts.googleapis.com/css?family=Abril+Fatface|Cardo|Cinzel|Prata|Raleway&display=swap'
       }
     ]
   },

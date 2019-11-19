@@ -1,25 +1,30 @@
 <template>
   <div class="container">
+    <AppHero />
+    <hr>
     <div>
-      <!-- <logo /> -->
-      <h1 class="title">
-        august-and-julie
-      </h1>
-      <h2 class="subtitle">
-        Carlijn Treep: Portfolio Site
-      </h2>
+      <h2><Star /> Projects</h2>
+      <p>
+        As a interior and fashion stylist there is nothing I love more than making spaces and people beautiful. Below is a list of my latest projects.
+        <nuxt-link to="/projects">
+          Click here for a full list of my past projects
+        </nuxt-link>
+      </p>
       <ProjectPreview :project="project" />
     </div>
   </div>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
 import ProjectPreview from '@/components/Projects/ProjectPreview.vue'
+import Star from '@/components/Icons/Star'
+import AppHero from '@/components/AppHero.vue'
 
 export default {
   components: {
-    ProjectPreview
+    ProjectPreview,
+    Star,
+    AppHero
   },
   data () {
     return {
@@ -37,36 +42,10 @@ export default {
   }
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss" scoped>
+h2 {
+  span.icon-star {
+    padding-right: 0.5rem;
+  }
 }
 </style>

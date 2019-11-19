@@ -1,9 +1,11 @@
 <template>
-  <div v-if="project" class="project-preview">
+  <div v-if="project">
     <nuxt-link :to="project.id">
-      <h3>{{ project.brand }}</h3>
-      <p>{{ project.type }}</p>
-      <p>{{ project.skillset }}</p>
+      <div class="project-preview" :style="{backgroundImage: `url(${project.img})` }">
+        <h3>{{ project.brand }}</h3>
+        <p>{{ project.type }}</p>
+        <p>{{ project.skillset }}</p>
+      </div>
     </nuxt-link>
   </div>
 </template>
@@ -17,4 +19,17 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.project-preview {
+  padding: 0.5rem;
+  filter: grayscale(100%);
+  transition: all 0.5s;
+  &:hover {
+    filter: none;
+  }
+  h3,
+  p {
+    color: var(--white);
+  }
+}
+</style>

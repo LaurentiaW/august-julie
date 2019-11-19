@@ -1,41 +1,27 @@
 <template>
   <div class="logo">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      :width="width"
-      :height="height"
-      viewBox="0 0 83.784 68"
-      class="icon"
-    >
-      <use :id="name" xlink:href="@/assets/icons/icon-logo.svg#icon-logo" />
-    </svg>
+    AUGUST <span>&</span> JULIE
+    <div class="tagline">
+      interior & fashion stylist
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    name: {
-      type: String,
-      default: 'brand-logo'
-    },
-    width: {
-      type: [Number, String],
-      default: 83.784
-    },
-    height: {
-      type: [Number, String],
-      default: 68
-    }
+<style lang="scss" scoped>
+.logo {
+  font-family: 'Prata', serif;
+  font-size: 30px;
+  color: var(--main-clr);
+  span {
+    font-family: 'Cinzel', serif;
+    color: var(--comp-clr);
+    vertical-align: text-bottom;
   }
-}
-</script>
-
-<style scoped>
-#invert-logo {
-  /* --animal-clr: var(--main-clr); */
-  --animal-clr: rgba(247, 170, 41, 0.54);
-  --brand-clr: var(--white);
+  .tagline {
+    font-family: 'Cardo', serif;
+    font-size: 16px;
+    color: var(--dark-blue);
+    text-align: right;
+  }
 }
 </style>

@@ -1,66 +1,23 @@
 <template>
   <div>
-    <div class="top-bar">
-      <div class="top-bar-wrapper">
-        <ul>
-          <li>
-            <span>
-              <a
-                href="https://www.hazletonpumps.co.za"
-                target="_blank"
-              >A Hazleton Pumps Intl Brand</a></span>
-          </li>
-          <li>
-            <a href="tel:+27(0)12-666-8203" class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <use xlink:href="/svg/ui-icons/call.svg#icon-call" />
-              </svg>
-              +27(0)12-666-8203</a>
-          </li>
-          <li>
-            <a href="mailto:info@hipposlurrypumps.com" class="icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <use xlink:href="/svg/ui-icons/email.svg#icon-email" />
-              </svg>
-              info@hipposlurrypumps.com</a>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="header-container">
       <header class="the-header container">
         <TheSideNavToggle @toggle="$emit('sidenavToggle')" />
         <div class="logo">
           <nuxt-link to="/">
-            <TheLogo name="brand-logo" />
+            <TheLogo />
           </nuxt-link>
         </div>
         <div class="navigation-items">
           <ul class="nav-list">
-            <SubNavLinks
-              v-for="(item, i) in items"
-              :key="i"
-              :title="item.title"
-              :slug="item.to"
-            />
+            <li v-for="(item, i) in items" :key="i" class="nav-item">
+              <nuxt-link :to="item.to">
+                <Star />
+                {{ item.title }}
+              </nuxt-link>
+            </li>
           </ul>
         </div>
-        <nuxt-link v-if="contact" to="/Contact" class="btn request-quote">
-          request <br>
-          a quote
-        </nuxt-link>
       </header>
     </div>
   </div>
@@ -69,45 +26,28 @@
 <script>
 import TheSideNavToggle from '@/components/Nav/TheSideNavToggle'
 import TheLogo from '@/components/Icons/TheLogo'
-import SubNavLinks from '@/components/Nav/SubNavLinks'
+import Star from '@/components/Icons/Star'
+
 export default {
   name: 'TheHeader',
   components: {
     TheSideNavToggle,
-    SubNavLinks,
-    TheLogo
-  },
-  props: {
-    contact: {
-      type: Boolean,
-      default: true
-    }
+    TheLogo,
+    Star
   },
   data () {
     return {
       items: [
         {
-          title: 'Pump Range',
-          to: '/pump-range'
+          title: 'projects',
+          to: '/projects'
         },
         {
-          title: 'Pump Systems',
-          to: '/pump-systems'
-        },
-        // {
-        //   title: 'Services',
-        //   to: '/services'
-        // },
-        // {
-        //   title: 'Resources',
-        //   to: '/Resources'
-        // },
-        {
-          title: 'About',
+          title: 'about',
           to: '/about'
         },
         {
-          title: 'Contact',
+          title: 'contact',
           to: '/contact'
         }
       ]
@@ -117,61 +57,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.top-bar {
-  width: 100%;
-  background-color: var(--comp-clr);
-  color: var(--white);
-
-  a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  .top-bar-wrapper {
-    max-width: 1000px;
-    margin: auto;
-    > ul {
-      padding: 0.5rem 0.25rem;
-      margin: 0;
-      font-size: 0.875rem;
-      display: flex;
-      justify-content: space-between;
-      li {
-        &:first-child {
-          display: none;
-          @media (min-width: 768px) {
-            display: inline;
-          }
-        }
-      }
-      .icon {
-        display: flex;
-        align-items: center;
-        > svg {
-          margin: 0 0.25rem 0 0;
-        }
-      }
-    }
-  }
-}
-
 .header-container {
   width: 100%;
   background-color: var(--white);
-}
-
-.request-quote {
-  font-family: 'Roboto Condensed', sans-serif;
-  position: absolute;
-  right: 1rem;
-  padding-left: 2.5rem;
-  font-size: 14px;
-  clip-path: circle(88.6% at 90% 90%);
-  @media (min-width: 768px) {
-    position: unset;
-  }
+  margin-bottom: 2rem;
 }
 
 .the-header {
@@ -183,7 +72,7 @@ export default {
   align-items: center;
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: auto 1fr;
   }
 }
 
@@ -205,12 +94,27 @@ export default {
   }
 
   .navigation-items {
+    font-family: 'Raleway', sans-serif;
     display: block;
+    color: var(--dark-blue);
   }
   .nav-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    .nav-item {
+      a {
+        color: var(--dark-blue);
+        padding: 1rem;
+        -moz-transition: all 3s ease-out;
+        -o-transition: all 3s ease-out;
+        transition: all 3s ease-out;
+        &:hover {
+          color: var(--comp-clr);
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }
 </style>

@@ -6,7 +6,7 @@
         <div class="sidenav-top">
           <h1 @click="$emit('close')">
             <nuxt-link to="/">
-              Hippo Slurry Pumps
+              <TheLogo />
             </nuxt-link>
           </h1>
           <i class="icon icon-close" @click="$emit('close')">
@@ -30,12 +30,14 @@
 <script>
 import SubNavLinks from '@/components/Nav/SubNavLinks'
 import CloseIcon from '@/components/Icons/CloseIcon'
+import TheLogo from '@/components/Icons/TheLogo'
 
 export default {
   name: 'TheSidenav',
   components: {
     SubNavLinks,
-    CloseIcon
+    CloseIcon,
+    TheLogo
   },
   props: {
     show: {
@@ -47,21 +49,9 @@ export default {
     return {
       items: [
         {
-          title: 'Pump Range',
-          to: '/pump-range'
+          title: 'Projects',
+          to: '/projects'
         },
-        {
-          title: 'Pump Systems',
-          to: '/pump-systems'
-        },
-        // {
-        //   title: 'Services',
-        //   to: '/services'
-        // },
-        // {
-        //   title: 'Resources',
-        //   to: '/Resources'
-        // },
         {
           title: 'About',
           to: '/about'

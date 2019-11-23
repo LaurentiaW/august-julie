@@ -10,6 +10,7 @@
   --grey: #707070;
   --form-width: 90%;
   --form-max-width: 600px;
+  --fancy-font: 'LumieraHandwriting', cursive;
 }
 
 $main-clr: var(--main-clr);
@@ -17,6 +18,15 @@ $comp-clr: var(--comp-clr);
 $grey: var(--grey);
 $dark-grey: var(--dark-grey);
 $text-clr: var(--dark-blue);
+$white: var(--white);
+
+/*   CUSTOM FONTS    */
+@font-face {
+  font-family: 'LumieraHandwriting';
+  src: url('/fonts/LumieraHandwriting.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 // font-family: 'Abril Fatface', cursive;
 // font-family: 'Cardo', serif;
@@ -27,7 +37,7 @@ $text-clr: var(--dark-blue);
 
 body {
   min-height: 100vh;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Cardo', serif;
   font-size: 16px;
   line-height: 1.4;
   word-spacing: 1px;
@@ -68,7 +78,7 @@ h4,
 h5,
 h6 {
   color: $comp-clr;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Cardo', serif;
   font-weight: lighter;
   font-size: 1.25rem;
 }
@@ -124,26 +134,28 @@ ul {
 }
 
 hr {
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--grey);
   margin: 30px 0;
 }
 
 label {
   font-weight: 600;
-  text-transform: uppercase;
-  font-size: 14px;
   letter-spacing: 0.1em;
   margin-top: 20px;
-  display: inline-block;
+  display: block;
+  color: var(--grey);
 }
 
 input {
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   padding: 5px 10px;
+  width: 300px;
 }
 
+textarea {
+  width: 300px;
+}
 /*------------  Layout   -----------*/
 .container {
   margin: 0 2rem;
@@ -152,34 +164,16 @@ input {
     margin: auto;
   }
 }
-
-main {
-  background-color: var(--white);
-  padding: 1rem;
-  margin: 0 1rem 1rem;
-  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-
-  @media (min-width: 1020px) {
-    max-width: 1064px;
-    margin: 0 auto 1rem;
-    padding: 2rem;
-  }
-}
-
 /*------------  Components   -----------*/
 button,
 .btn {
   border: 1px solid $main-clr;
-  border-radius: 4px;
   background: $main-clr;
   padding: 10px 14px;
   cursor: pointer;
-  color: $comp-clr;
+  color: $white;
   font-weight: 700;
-  font-family: 'nexa_rust_sansblack', monospace;
+  font-family: 'Cardo', serif;
   transition: 0.3s all ease;
   -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
     0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -188,26 +182,8 @@ button,
   &:hover {
     background: $comp-clr;
     border: 1px solid $comp-clr;
-    color: $main-clr;
+    color: $white;
   }
-}
-
-section {
-  padding-bottom: 2rem;
-  border-bottom: solid 1px $comp-clr;
-  margin-bottom: 2rem;
-  &:last-child {
-    border: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-}
-
-.framed {
-  border: solid 1px var(--grey);
-  border-radius: 2px;
-  padding: 1rem;
-  background-color: var(--white);
 }
 
 .card {

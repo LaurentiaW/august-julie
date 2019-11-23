@@ -10,7 +10,7 @@
       <img src="/temp/alexandra-k-JGYL-1.png" alt="" class="three">
       <img src="/temp/alexandra-k-JGYL6LmIq3Q-unsplash.png" alt="" class="four">
       <img src="/temp/chantal-degaust-Oj-3MwyMICs-unsplash.png" alt="" class="five">
-      <span>Made with love <br> X Carlijn Treep</span>
+      <span class="fancy-text">Made with love <br> X Carlijn Treep</span>
     </div>
   </div>
 </template>
@@ -40,9 +40,9 @@ div.appHero {
     }
     .one {
       width: 153px;
-      top: 15%;
+      top: 14%;
       z-index: 6;
-      left: 12%;
+      left: 11%;
     }
     .two {
       width: 439px;
@@ -50,8 +50,8 @@ div.appHero {
       left: 25%;
     }
     .three {
-      width: 253px;
-      right: 8%;
+      width: 213px;
+      right: 14%;
       top: 40%;
       transform: translateY(-50%);
     }
@@ -70,6 +70,15 @@ div.appHero {
     }
     img {
       width: 100%;
+    }
+    .fancy-text {
+      font-family: var(--fancy-font);
+      color: var(--comp-clr);
+      font-size: 3rem;
+      position: absolute;
+      bottom: 2.75rem;
+      right: 1rem;
+      transform: rotate(-33deg);
     }
   }
   .slogan {

@@ -12,6 +12,7 @@
       </p>
       <ProjectPreview :project="project" />
     </div>
+    <TheCallToAction />
   </div>
 </template>
 
@@ -19,12 +20,14 @@
 import ProjectPreview from '@/components/Projects/ProjectPreview.vue'
 import Star from '@/components/Icons/Star'
 import AppHero from '@/components/AppHero.vue'
+import TheCallToAction from '@/components/TheCallToAction.vue'
 
 export default {
   components: {
     ProjectPreview,
     Star,
-    AppHero
+    AppHero,
+    TheCallToAction
   },
   data () {
     return {

@@ -18,7 +18,7 @@
 .wrapper {
   height: 60px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .drawer-toggle {

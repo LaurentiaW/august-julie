@@ -1,25 +1,25 @@
 <template>
   <footer>
     <span>&copy;2019 With love XOXO Carlijn Treep</span>
-    <!-- <TheLogo /> -->
+    <FavIcon />
     <span>Connect with  me on:  </span>
   </footer>
 </template>
 
 <script>
-// import TheLogo from '@/components/Icons/TheLogo'
+import FavIcon from '@/components/Icons/FavIcon'
 export default {
   name: 'TheFooter',
   components: {
-    // TheLogo
+    FavIcon
   }
 }
 </script>
 
 <style lang="scss" scoped>
 footer {
-  padding: 0.5rem;
-  background-color: rgba(227, 173, 155, 0.44);
+  padding: 1rem;
+  background-color: rgba(112, 112, 112, 0.44);
   color: var(--white);
   font-family: 'Abril Fatface', cursive;
 }

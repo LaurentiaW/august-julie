@@ -14,13 +14,14 @@
           </i>
         </div>
         <ul class="sidenav-wrapper">
-          <SubNavLinks
-            v-for="(item, i) in items"
-            :key="i"
-            :title="item.title"
-            :slug="item.to"
-            @click.native="$emit('close')"
-          />
+          <ul class="nav-list">
+            <li v-for="(item, i) in items" :key="i" class="nav-item">
+              <nuxt-link :to="item.to" @click.native="$emit('close')">
+                <Star />
+                {{ item.title }}
+              </nuxt-link>
+            </li>
+          </ul>
         </ul>
       </div>
     </transition>
@@ -28,16 +29,16 @@
 </template>
 
 <script>
-import SubNavLinks from '@/components/Nav/SubNavLinks'
 import CloseIcon from '@/components/Icons/CloseIcon'
 import TheLogo from '@/components/Icons/TheLogo'
+import Star from '@/components/Icons/Star'
 
 export default {
   name: 'TheSidenav',
   components: {
-    SubNavLinks,
     CloseIcon,
-    TheLogo
+    TheLogo,
+    Star
   },
   props: {
     show: {
@@ -119,18 +120,13 @@ h1 a {
 }
 
 .nav-item {
-  margin: 10px;
+  margin: 20px 10px;
 }
 
 .nav-item a {
   text-decoration: none;
-  padding: 20px 0;
-  font-size: 1.5rem;
-}
-
-.nav-item a:hover,
-.nav-item a:active {
-  text-decoration: underline;
+  color: var(--grey);
+  font-size: 1.25rem;
 }
 
 i.icon {

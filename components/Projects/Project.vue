@@ -1,11 +1,17 @@
 <template>
   <article v-if="project">
-    <ImageOverlay :img="selectedImg" :show="displayImg" @close="displayImg = false" />
+    <div v-if="displayImg">
+      <div class="modal-backdrop" @click="displayImg = !displayImg " />
+      <div class="modal">
+        <i class="modal-action" @click="displayImg = !displayImg "><CloseIcon name="brand-close" /></i>
+        <img :src="selectedImg" class="modal-img">
+      </div>
+    </div>
     <h1><Star /> {{ project.brand }}</h1>
     <p>{{ project.skillset }}<span v-show="project.skillset">,</span> {{ project.type }}</p>
     <div class="content-wrapper">
       <div class="picture-grid">
-        <figure v-for="(image, i) in project.images" :key="i" :class="`gallery__item gallery__item--${i + 1}`" @click="onImgSelected">
+        <figure v-for="(image, i) in project.images" :key="i" :class="`gallery__item gallery__item--${i + 1}`" @click="imgShow(image.img)">
           <img :src="image.img" :alt="image.text" :title="image.text" class="gallery__img">
         </figure>
       </div>
@@ -15,14 +21,14 @@
 </template>
 
 <script>
-import ImageOverlay from '@/components/Projects/ImageOverlay.vue'
 import Star from '@/components/Icons/Star'
+import CloseIcon from '@/components/Icons/CloseIcon.vue'
 
 export default {
   name: 'Project',
   components: {
     Star,
-    ImageOverlay
+    CloseIcon
   },
   props: {
     project: Object
@@ -34,18 +40,11 @@ export default {
     }
   },
   methods: {
-    onImgSelected () {
-      this.selectedImg = this.image.img
+    imgShow (img) {
+      console.log(img)
+      this.selectedImg = img
       this.displayImg = true
-      // this.$emit('imageSelect', this.image)
-      /* eslint-disable */
-      console.log(selectedImg)
-      // this.selectedImg = img
-      // this.displayAward = true
-      //   onImageSelected () {
-
-      //   this.$emit('imageSelected', this.images)
-      // }
+      console.log(img)
     }
   }
 }
@@ -69,6 +68,33 @@ p {
   }
   p {
     margin-top: 0;
+  }
+}
+
+.modal {
+  background-color: var(--white);
+  position: fixed;
+  z-index: 1001;
+  padding: 1rem;
+  width: 99%;
+  height: auto;
+  @media screen and (min-width: 768px) {
+    height: 90vh;
+    width: auto;
+  }
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .modal-action {
+    text-align: right;
+  }
+  .modal-img {
+    margin: 0 auto;
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      width: 90%;
+      height: auto;
+    }
   }
 }
 

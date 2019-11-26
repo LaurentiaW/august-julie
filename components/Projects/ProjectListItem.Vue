@@ -5,9 +5,9 @@
       <div class="text-wrapper">
         <h3>{{ project.brand }}</h3>
         <p class="line-clamp">
-            {{ project.description }}
+          {{ project.description }}
         </p>
-       <span class="action-text">Read More</span>
+        <span class="action-text">Read More</span>
       </div>
     </nuxt-link>
   </div>
@@ -15,8 +15,10 @@
 
 <script>
 export default {
-  name: 'ProjectListItem',
-  props: { project: Object }
+  name: 'ProjectLIstItem',
+  props: {
+    project: Object
+  }
 }
 </script>
 

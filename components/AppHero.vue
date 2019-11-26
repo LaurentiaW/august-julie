@@ -27,6 +27,11 @@ div.appHero {
   justify-content: space-between;
   width: 100%;
   align-items: center;
+  .slogan {
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    z-index: 1;
+  }
   .image-wrapper {
     background-color: rgba(227, 173, 155, 0.44);
     border-radius: 44px;
@@ -34,56 +39,189 @@ div.appHero {
     width: 100%;
     height: 88vh;
     margin-left: -7px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    @media screen and (min-width: 768px) {
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-columns: repeat(16, 1fr);
+      padding: 1rem;
+    }
     overflow: hidden;
-    > * {
-      position: absolute;
-    }
-    .one {
-      width: 153px;
-      top: 14%;
-      z-index: 6;
-      left: 11%;
-    }
-    .two {
-      width: 439px;
-      top: 6%;
-      left: 25%;
-    }
-    .three {
-      width: 213px;
-      right: 14%;
-      top: 40%;
-      transform: translateY(-50%);
-    }
-    .four {
-      width: 142px;
-      bottom: 11%;
-      left: 18%;
-      z-index: 5;
-    }
-    .five {
-      width: 330px;
-      bottom: 3%;
-      left: 49%;
-      transform: translateX(-50%);
-      z-index: 3;
-    }
+
     img {
       width: 100%;
-    }
-    .fancy-text {
-      font-family: var(--fancy-font);
-      color: var(--comp-clr);
-      font-size: 3rem;
-      position: absolute;
-      bottom: 2.75rem;
-      right: 1rem;
-      transform: rotate(-33deg);
+      height: 100%;
+      object-fit: cover;
+
+      &.one {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        @media screen and (min-width: 768px) {
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 2;
+          grid-row-end: 6;
+          z-index: 7;
+        }
+      }
+
+      &.two {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 5;
+        @media screen and (min-width: 768px) {
+          grid-column-start: 4;
+          grid-column-end: 11;
+          grid-row-start: 1;
+          grid-row-end: 7;
+          z-index: 6;
+        }
+      }
+      &.three {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        @media screen and (min-width: 768px) {
+          grid-column-start: 10;
+          grid-column-end: 14;
+          grid-row-start: 2;
+          grid-row-end: 8;
+        }
+      }
+      &.four {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 5;
+        grid-row-end: 9;
+        @media screen and (min-width: 768px) {
+          grid-column-start: 3;
+          grid-column-end: 5;
+          grid-row-start: 5;
+          grid-row-end: 8;
+          z-index: 8;
+        }
+      }
+      &.five {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 5;
+        grid-row-end: 9;
+        @media screen and (min-width: 768px) {
+          grid-column-start: 5;
+          grid-column-end: 11;
+          grid-row-start: 6;
+          grid-row-end: 9;
+          z-index: 7;
+        }
+      }
     }
   }
-  .slogan {
-    writing-mode: vertical-rl;
-    transform: rotate(-180deg);
+
+  .fancy-text {
+    font-family: var(--fancy-font);
+    color: var(--comp-clr);
+    font-size: 3rem;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: rotate(-33deg);
+    background-color: rgba(255, 255, 255, 0.54);
+    border-radius: 4px;
+    padding: 0.5rem;
+    white-space: nowrap;
+    @media screen and (min-width: 768px) {
+      bottom: 2.75rem;
+      right: 1rem;
+      top: unset;
+      left: unset;
+      white-space: pre-wrap;
+    }
+  }
+  @supports not (display: grid) {
+    .image-wrapper {
+      overflow: hidden;
+      > * {
+        position: absolute;
+      }
+      .one {
+        width: 12.44vw;
+        top: 14%;
+        z-index: 6;
+        left: 11%;
+      }
+      .two {
+        width: 35.69vw;
+        top: 6%;
+        left: 25%;
+      }
+      .three {
+        width: 17.32vw;
+        right: 14%;
+        top: 40%;
+        transform: translateY(-50%);
+      }
+      .four {
+        width: 11.54vw;
+        bottom: 11%;
+        left: 18%;
+        z-index: 5;
+      }
+      .five {
+        width: 26.82vw;
+        bottom: 3%;
+        left: 49%;
+        transform: translateX(-50%);
+        z-index: 3;
+      }
+      img {
+        width: 100%;
+        min-width: 130px;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      div.appHero {
+        .image-wrapper {
+          .one {
+            width: 153px;
+            top: 14%;
+            z-index: 6;
+            left: 11%;
+          }
+          .two {
+            width: 439px;
+            top: 6%;
+            left: 25%;
+          }
+          .three {
+            width: 213px;
+            right: 14%;
+            top: 40%;
+            transform: translateY(-50%);
+          }
+          .four {
+            width: 142px;
+            bottom: 11%;
+            left: 18%;
+            z-index: 5;
+          }
+          .five {
+            width: 330px;
+            bottom: 3%;
+            left: 49%;
+            transform: translateX(-50%);
+            z-index: 3;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 }
 </style>

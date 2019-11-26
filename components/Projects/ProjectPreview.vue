@@ -1,7 +1,7 @@
 <template>
   <div v-if="project">
     <nuxt-link :to="project.id">
-      <div class="project-preview" :style="{backgroundImage: `url(${project.img})` }">
+      <div class="project-preview" :style="{backgroundImage: `url(${project.img})`, backgroundSize: 'Cover'}">
         <h3>{{ project.brand }}</h3>
         <p>{{ project.type }}</p>
         <p>{{ project.skillset }}</p>

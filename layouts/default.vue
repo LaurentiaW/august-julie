@@ -1,7 +1,7 @@
 <template>
   <div>
     <TheHeader @sidenavToggle="displaySidenav = !displaySidenav " />
-    <TheSideNav
+    <TheSidenav
       :show="displaySidenav"
       @close="displaySidenav = false"
     />
@@ -12,16 +12,16 @@
 
 <script>
 import TheHeader from '@/components/Nav/TheHeader.vue'
-import TheSideNav from '@/components/Nav/TheSideNav.vue'
+import TheSidenav from '@/components/Nav/TheSidenav.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
 export default {
   components: {
     TheHeader,
-    TheSideNav,
+    TheSidenav,
     TheFooter
   },
-  data () {
+  data() {
     return {
       displaySidenav: false
     }

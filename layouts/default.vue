@@ -21,7 +21,7 @@ export default {
     TheSidenav,
     TheFooter
   },
-  data() {
+  data () {
     return {
       displaySidenav: false
     }

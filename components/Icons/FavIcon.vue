@@ -5,7 +5,7 @@
       xmlns:xlink="http://www.w3.org/1999/xlink"
       :width="width"
       :height="height"
-      viewBox="0 0 24 24"
+      viewBox="0 0 135 122"
       class="icon"
     >
       <use xlink:href="/svg/ui-icons/logo-icon.svg#icon-logo" />

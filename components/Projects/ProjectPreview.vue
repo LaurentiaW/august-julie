@@ -1,13 +1,9 @@
 <template>
-  <div v-if="project">
-    <nuxt-link :to="project.id">
-      <div class="project-preview" :style="{backgroundImage: `url(${project.img})`, backgroundSize: 'Cover'}">
-        <h3>{{ project.brand }}</h3>
-        <p>{{ project.type }}</p>
-        <p>{{ project.skillset }}</p>
-      </div>
-    </nuxt-link>
-  </div>
+  <nuxt-link v-if="project" :to="project.id" class="project-preview" :style="{backgroundImage: `url(${project.img})`, backgroundSize: 'Cover'}">
+    <h3>{{ project.brand }}</h3>
+    <p>{{ project.type }}</p>
+    <p>{{ project.skillset }}</p>
+  </nuxt-link>
 </template>
 
 <script>

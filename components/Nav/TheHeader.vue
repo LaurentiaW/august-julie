@@ -60,7 +60,6 @@ export default {
 .header-container {
   width: 100%;
   background-color: var(--white);
-  margin-bottom: 2rem;
 }
 
 .the-header {

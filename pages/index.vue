@@ -151,6 +151,9 @@ h2 {
       height: 100%;
       object-fit: cover;
     }
+    .project-preview {
+      text-shadow: 1px 1px 2px #707070;
+    }
     .ppg-1 {
       grid-column-start: 1;
       grid-column-end: 3;

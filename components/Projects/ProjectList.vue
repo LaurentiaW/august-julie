@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'ProjectListItem',
+  name: 'ProjectList',
   props: {
     project: Object
   }

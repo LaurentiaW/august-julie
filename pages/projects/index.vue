@@ -3,19 +3,19 @@
     <h2><Star /> Projects</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore sit dolore, fuga eligendi aperiam mollitia?</p>
     <!-- <ProjectListItem :project="project" /> -->
-    <ProjectListItem v-for="(project, i) in projects" :key="i" :project="project" />
+    <!-- <ProjectListItem v-for="(project, i) in projects" :key="i" :project="project" /> -->
     <TheCallToAction />
   </div>
 </template>
 
 <script>
-import ProjectListItem from '@/components/Projects/ProjectListItem.vue'
+// import ProjectListItem from '@/components/Projects/ProjectListItem.vue'
 import Star from '@/components/Icons/Star'
 import TheCallToAction from '@/components/TheCallToAction.vue'
 
 export default {
   components: {
-    ProjectListItem,
+    // ProjectListItem,
     Star,
     TheCallToAction
   },

@@ -1,16 +1,14 @@
 <template>
-  <div v-if="project">
-    <nuxt-link :to="project.id" class="project-list-item">
-      <img :src="project.img">
-      <div class="text-wrapper">
-        <h3>{{ project.brand }}</h3>
-        <p class="line-clamp">
-          {{ project.description }}
-        </p>
-        <span class="action-text">Read More</span>
-      </div>
-    </nuxt-link>
-  </div>
+  <nuxt-link v-if="project" :to="project.id" class="project-list-item">
+    <img :src="project.img">
+    <div class="text-wrapper">
+      <h3>{{ project.brand }}</h3>
+      <p class="line-clamp">
+        {{ project.description }}
+      </p>
+      <span class="action-text">Read More</span>
+    </div>
+  </nuxt-link>
 </template>
 
 <script>

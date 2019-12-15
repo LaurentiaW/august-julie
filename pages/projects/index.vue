@@ -12,7 +12,6 @@
 import ProjectListItem from '@/components/Projects/ProjectListItem.vue'
 import Star from '@/components/Icons/Star'
 import TheCallToAction from '@/components/TheCallToAction.vue'
-
 export default {
   components: {
     ProjectListItem,

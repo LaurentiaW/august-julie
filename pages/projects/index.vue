@@ -2,19 +2,21 @@
   <div class="container">
     <h2><Star /> Projects</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore sit dolore, fuga eligendi aperiam mollitia?</p>
-    <!-- <ProjectListItem :project="project" /> -->
-    <ProjectListItem v-for="(project, i) in projects" :key="i" :project="project" />
+    <!-- <ProjectListItem v-for="(project, i) in projects" :key="i" :project="project" /> -->
+    <ProjectPreview v-for="(project, i) in projects" :key="i" :project="project" :class="`ppg-${i+1}`" />
     <TheCallToAction />
   </div>
 </template>
 
 <script>
-import ProjectListItem from '@/components/Projects/ProjectListItem.vue'
+// import ProjectListItem from '@/components/Projects/ProjectListItem.vue'
+import ProjectPreview from '@/components/Projects/ProjectPreview.vue'
 import Star from '@/components/Icons/Star'
 import TheCallToAction from '@/components/TheCallToAction.vue'
 export default {
   components: {
-    ProjectListItem,
+    // ProjectListItem,
+    ProjectPreview,
     Star,
     TheCallToAction
   },

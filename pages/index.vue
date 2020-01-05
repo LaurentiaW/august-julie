@@ -8,7 +8,7 @@
         <h2><Star /> Projects</h2>
         <p>
           As a interior and fashion stylist there is nothing I love more than making spaces and people beautiful. Below is a list of my latest projects.
-          <nuxt-link to="/projects">
+          <nuxt-link to="/projects" class="em">
             Click here for a full list of my past projects
           </nuxt-link>
         </p>
@@ -139,10 +139,20 @@ h2 {
   }
 }
 
+.em {
+  text-shadow: 1px 1px 2px #707070;
+}
 .project-preview-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
+  .project-preview {
+    padding: 1rem;
+    p {
+      margin: 0;
+    }
+  }
+
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);

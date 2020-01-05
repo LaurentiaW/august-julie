@@ -11,7 +11,9 @@
           <img src="/temp/hero-three.png" alt="text of this img">
         </div>
         <ul>
-          <li v-for="(dot, i) in dots" :key="i" :style="{backgroundColor:dot.color}" />
+          <li v-for="(dot, i) in dots" :key="i">
+            <PaintSplash :style="{fill:dot.color}" />
+          </li>
         </ul>
       </div>
     </div>
@@ -19,8 +21,13 @@
 </template>
 
 <script>
+import PaintSplash from '@/components/Icons/PaintSplash.vue'
+
 export default {
   name: 'AppHero',
+  components: {
+    PaintSplash
+  },
   data () {
     return {
       dots: [
@@ -59,10 +66,7 @@ export default {
       li {
         width: 31px;
         height: 31px;
-        border-radius: 50%;
         margin: 0 0 70px 0;
-        box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
-          0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
         @media (min-width: 768px) {
           margin: 0 0 50px 0;
         }

@@ -1,18 +1,36 @@
 <template>
   <article v-if="project">
     <div v-if="displayImg">
-      <div class="modal-backdrop" @click="displayImg = !displayImg " />
+      <div class="modal-backdrop" @click="displayImg = !displayImg" />
       <div class="modal">
-        <i class="modal-action" @click="displayImg = !displayImg "><CloseIcon name="brand-close" /></i>
+        <i
+          class="modal-action"
+          @click="displayImg = !displayImg"
+        ><CloseIcon
+          name="brand-close"
+        /></i>
         <img :src="selectedImg" class="modal-img">
       </div>
     </div>
     <h1><Star /> {{ project.brand }}</h1>
-    <p>{{ project.skillset }}<span v-show="project.skillset">,</span> {{ project.type }}</p>
+    <p>
+      {{ project.skillset }}<span v-show="project.skillset">,</span>
+      {{ project.type }}
+    </p>
     <div class="content-wrapper">
       <div class="picture-grid">
-        <figure v-for="(image, i) in project.images" :key="i" :class="`gallery__item gallery__item--${i + 1}`" @click="imgShow(image.img)">
-          <img :src="image.img" :alt="image.text" :title="image.text" class="gallery__img">
+        <figure
+          v-for="(image, i) in project.images"
+          :key="i"
+          :class="`gallery__item gallery__item--${i + 1}`"
+          @click="imgShow(image.img)"
+        >
+          <img
+            :src="image.img"
+            :alt="image.text"
+            :title="image.text"
+            class="gallery__img"
+          >
         </figure>
       </div>
       <p>{{ project.description }}</p>
@@ -41,10 +59,10 @@ export default {
   },
   methods: {
     imgShow (img) {
-      console.log(img)
+      // console.log(img)
       this.selectedImg = img
       this.displayImg = true
-      console.log(img)
+      // console.log(img)
     }
   }
 }

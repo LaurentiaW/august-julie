@@ -26,6 +26,7 @@ export default {
   h3,
   p {
     color: var(--white);
+    margin: 0;
   }
 }
 </style>

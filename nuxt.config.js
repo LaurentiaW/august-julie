@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   mode: 'universal',
   /*
@@ -51,11 +53,47 @@ export default {
     [
       'storyblok-nuxt',
       {
-        accessToken: 'Z4bppbJclrhmkgaF1TCXhwtt',
+        accessToken:
+          process.env.NODE_ENV === 'production'
+            ? 'a04MQFtJDoaPYRrwGr7x3gtt'
+            : 'Z4bppbJclrhmkgaF1TCXhwtt',
         cacheProvider: 'memory'
       }
     ]
   ],
+  generate: {
+    routes (callback) {
+      const token = `a04MQFtJDoaPYRrwGr7x3gtt`
+      const version = 'published'
+      let cacheVersion = 0
+
+      // other routes that are not in Storyblok with their slug.
+      const routes = ['/'] // adds / directly
+
+      // Load space and receive latest cache version key to improve performance
+      axios
+        .get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${token}`)
+        .then((spaceRes) => {
+          // timestamp of latest publish
+          cacheVersion = spaceRes.data.space.version
+
+          // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
+          axios
+            .get(
+              `https://api.storyblok.com/v1/cdn/links?token=${token}&version=${version}&cv=${cacheVersion}`
+            )
+            .then((res) => {
+              Object.keys(res.data.links).forEach((key) => {
+                if (res.data.links[key].slug !== 'home') {
+                  routes.push('/' + res.data.links[key].slug)
+                }
+              })
+
+              callback(null, routes)
+            })
+        })
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

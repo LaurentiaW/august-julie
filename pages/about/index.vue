@@ -26,9 +26,12 @@ export default {
     TheCallToAction
   },
   asyncData (context) {
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+
     return context.app.$storyapi
       .get('cdn/stories/about', {
-        version: 'draft'
+        version
       })
       .then((res) => {
         // eslint-disable-next-line no-console

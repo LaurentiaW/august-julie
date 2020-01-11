@@ -21,6 +21,22 @@ export default {
     TheSidenav,
     TheFooter
   },
+  asyncData (context) {
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+    return context.app.$storyapi
+      .get('cdn/stories/', {
+        version
+      })
+      .then((res) => {
+        // eslint-disable-next-line no-console
+        console.log(res)
+        // return {
+        //   blok: res.data.stories,
+        //   allProjects: res.data.stories
+        // }
+      })
+  },
   data () {
     return {
       displaySidenav: false

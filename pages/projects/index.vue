@@ -15,38 +15,31 @@ import TheCallToAction from '@/components/TheCallToAction.vue'
 export default {
   components: {
     ProjectList,
-    // ProjectPreview,
     Star,
     TheCallToAction
   },
-  data () {
-    return {
-      // displayImg: false,
-      // selectedImg: null,
-      projects: [
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1',
-          title: 'The name that shows when hovering on image'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1',
-          title: 'The name that shows when hovering on image'
+  asyncData (context) {
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+    return context.app.$storyapi
+      .get('cdn/stories/', {
+        version,
+        starts_with: 'projects/'
+      })
+      .then((res) => {
+        // eslint-disable-next-line no-console
+        // console.log(res)
+        return {
+          blok: res.data.stories,
+          allProjects: res.data.stories
         }
-      ]
+      })
+  },
+  computed: {
+    projects () {
+      return this.allProjects.filter(
+        project => project.content.component === 'project'
+      )
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
-  <nuxt-link v-if="project" :to="project.id" class="project-preview" :style="{backgroundImage: `url(${project.img})`, backgroundSize: 'Cover'}">
-    <h3>{{ project.brand }}</h3>
-    <p>{{ project.type }}</p>
-    <p>{{ project.skillset }}</p>
+  <nuxt-link v-if="project" :to="`projects/${project.slug}`" class="project-preview" :style="{backgroundImage: `url(${project.content.images[0].img})`, backgroundSize: 'Cover', backgroundPosition: 'center center'}">
+    <h3>{{ project.content.name }}</h3>
+    <p>{{ project.content.type }}</p>
+    <p>{{ project.content.skillset }}</p>
   </nuxt-link>
 </template>
 

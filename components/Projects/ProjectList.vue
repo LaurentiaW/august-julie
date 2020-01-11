@@ -1,10 +1,10 @@
 <template>
-  <nuxt-link v-if="project" :to="project.id" class="project-list-item">
-    <img :src="project.img">
+  <nuxt-link v-if="project" :to="`projects/${project.slug}`" class="project-list-item">
+    <img :src="project.content.images[0].img" :alt="project.content.images[0].alt">
     <div class="text-wrapper">
-      <h3>{{ project.brand }}</h3>
+      <h3>{{ project.content.name }}</h3>
       <p class="line-clamp">
-        {{ project.description }}
+        {{ project.content.description }}
       </p>
       <span class="action-text">Read More</span>
     </div>

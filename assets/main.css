@@ -1,0 +1,311 @@
+/*------------ Variables -----------*/
+:root {
+  --main-clr: #e3ad9b;
+  --comp-clr: #9a3924;
+  --white: #ffffff;
+  --yellow: #c48749;
+  --black: #1e1d1a;
+  --dark-blue: #10202b;
+  --grey: #707070;
+  --form-width: 90%;
+  --form-max-width: 600px;
+  --fancy-font: 'LumieraHandwriting', cursive;
+}
+
+/*   CUSTOM FONTS    */
+@font-face {
+  font-family: 'LumieraHandwriting';
+  src: url("/fonts/LumieraHandwriting.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------  Global   -----------*/
+body {
+  min-height: 100vh;
+  font-family: 'Cardo', serif;
+  font-size: 16px;
+  line-height: 1.4;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: var(--dark-blue);
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Abril Fatface', cursive;
+  color: var(--main-clr);
+  font-size: 21px;
+}
+
+@media screen and (min-width: 993px) {
+  h1,
+  h2,
+  h3 {
+    font-size: 30px;
+  }
+}
+
+h1 {
+  font-size: 40px;
+}
+
+@media screen and (min-width: 993px) {
+  h1 {
+    font-size: 50px;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--grey);
+}
+
+@media screen and (min-width: 993px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+h4,
+h5,
+h6 {
+  color: var(--comp-clr);
+  font-family: 'Cardo', serif;
+  font-weight: lighter;
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 993px) {
+  h4 {
+    font-size: 20px;
+  }
+}
+
+h4.upper {
+  text-transform: uppercase;
+}
+
+p {
+  margin: 20px 0;
+  font-family: 'Cardo', serif;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+a,
+a:active,
+a:visited {
+  color: var(--comp-clr);
+  text-decoration: none;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+figure > * {
+  font-weight: bold;
+}
+
+ul {
+  padding: 0;
+  margin: 20px 0;
+}
+
+ul li {
+  list-style: none;
+  margin: 5px 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+hr {
+  border-top: 1px solid var(--grey);
+  margin: 30px 0;
+}
+
+label {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 20px;
+  display: block;
+  color: var(--grey);
+}
+
+input {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+textarea {
+  width: 300px;
+}
+
+/*------------  Layout   -----------*/
+.container {
+  margin: 0 2rem;
+}
+
+@media (min-width: 1020px) {
+  .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+/*------------  Components   -----------*/
+button,
+.btn {
+  border: 1px solid var(--main-clr);
+  background: var(--main-clr);
+  padding: 10px 14px;
+  cursor: pointer;
+  color: var(--white);
+  font-weight: 700;
+  font-family: 'Cardo', serif;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+button:hover,
+.btn:hover {
+  background: var(--comp-clr);
+  border: 1px solid var(--comp-clr);
+  color: var(--white);
+}
+
+.card {
+  position: relative;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  -webkit-transition: -webkit-box-shadow 0.25s;
+  transition: -webkit-box-shadow 0.25s;
+  transition: box-shadow 0.25s;
+  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s;
+  border-radius: 2px;
+}
+
+.card .card-img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card .card-content {
+  padding: 24px;
+}
+
+.card .card-horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card .card-horizontal .card-content {
+  padding: 1rem;
+}
+
+.card .card-box {
+  display: inline;
+  background-color: var(--dark-grey);
+  color: var(--white);
+  padding: 0.25rem 0.25rem;
+  margin: 0;
+}
+
+.card .card-box > * {
+  display: inline;
+  margin: 0;
+  color: var(--white);
+}
+
+.card .card-bg-img {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--grey);
+}
+
+.card .card-title {
+  padding: 0 1rem;
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0.54);
+}
+
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/*------------  Utilities   -----------*/
+.two-col .card:first-child,
+.two-col-lrg .card:first-child {
+  margin-top: 0;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.margin-zero {
+  margin: 0;
+}
+
+.emphasize {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.relative {
+  position: relative;
+}
+/*# sourceMappingURL=main.css.map */

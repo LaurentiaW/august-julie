@@ -1,14 +1,14 @@
 <template>
   <div class="hero-wrapper">
-    <div v-if="bgImg" :style="{backgroundImage: `url( ${bgImg})` }" class="bgImg">
+    <div v-if="bgImg" :style="{backgroundImage: `url( ${backgroundImg})` }" class="bgImg">
       <div class="container">
         <h3 class="slogan">
-          stardust for the eye
+          {{ slogan }}
         </h3>
         <div class="img-wrapper">
-          <img src="/temp/hero-two.png" alt="text of this img">
-          <img src="/temp/hero-one.png" alt="text of this img">
-          <img src="/temp/hero-three.png" alt="text of this img">
+          <img :src="imgOne" alt="text of this img">
+          <img :src="imgTwo" alt="text of this img">
+          <img :src="imgThree" alt="text of this img">
         </div>
         <ul>
           <li v-for="(dot, i) in dots" :key="i">
@@ -27,6 +27,28 @@ export default {
   name: 'AppHero',
   components: {
     PaintSplash
+  },
+  props: {
+    backgroundImg: {
+      type: String,
+      default: '/temp/bgimg.png'
+    },
+    imgOne: {
+      type: String,
+      default: '/temp/hero-one.png'
+    },
+    imgTwo: {
+      type: String,
+      default: '/temp/hero-two.png'
+    },
+    imgThree: {
+      type: String,
+      default: '/temp/hero-three.png'
+    },
+    slogan: {
+      type: String,
+      default: 'stardust for the eyes'
+    }
   },
   data () {
     return {

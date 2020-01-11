@@ -12,7 +12,7 @@
         <img :src="selectedImg" class="modal-img">
       </div>
     </div>
-    <h1><Star /> {{ project.brand }}</h1>
+    <h1><Star /> {{ project.name }}</h1>
     <p>
       {{ project.skillset }}<span v-show="project.skillset">,</span>
       {{ project.type }}
@@ -27,8 +27,7 @@
         >
           <img
             :src="image.img"
-            :alt="image.text"
-            :title="image.text"
+            :alt="image.alt"
             class="gallery__img"
           >
         </figure>

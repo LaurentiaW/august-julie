@@ -1,19 +1,30 @@
+/* eslint-disable arrow-parens */
 <template>
   <div>
-    <AltHero />
-
+    <AltHero
+      :background-img="homePage[0].content.body[0].backgroundImg"
+      :img-one="homePage[0].content.body[0].imgOne"
+      :img-two="homePage[0].content.body[0].imgTwo"
+      :img-three="homePage[0].content.body[0].imgThree"
+      :slogan="homePage[0].content.body[0].slogan"
+    />
     <div class="container">
       <hr>
       <div>
-        <h2><Star /> Projects</h2>
+        <h2><Star /> {{ projectPage[0].name }}  </h2>
         <p>
-          As a interior and fashion stylist there is nothing I love more than making spaces and people beautiful. Below is a list of my latest projects.
+          {{ projectPage[0].content.body[1].intro_text }}
           <nuxt-link to="/projects" class="em">
-            Click here for a full list of my past projects
+            {{ projectPage[0].content.body[1].link_text }}
           </nuxt-link>
         </p>
         <div class="project-preview-grid">
-          <ProjectPreview v-for="(project, i) in projects" :key="i" :project="project" :class="`ppg-${i+1}`" />
+          <ProjectPreview
+            v-for="(project, i) in projects"
+            :key="i"
+            :project="project"
+            :class="`ppg-${i + 1}`"
+          />
         </div>
       </div>
       <TheCallToAction />
@@ -34,100 +45,36 @@ export default {
     AltHero,
     TheCallToAction
   },
-  data () {
-    return {
-      projects: [
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
-        },
-        {
-          brand: 'Nijhof',
-          img:
-            'https://images.pexels.com/photos/2132610/pexels-photo-2132610.jpeg',
-          type: 'Etalages',
-          skillset: 'Styling',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit voluptatem facilis totam quae reiciendis! Rerum obcaecati quia nam laboriosam nemo.',
-          id: '/projects/1'
+  asyncData (context) {
+    const version =
+      context.query._storyblok || context.isDev ? 'draft' : 'published'
+    return context.app.$storyapi
+      .get('cdn/stories/', {
+        version
+      })
+      .then((res) => {
+        // eslint-disable-next-line no-console
+        // console.log(res)
+        return {
+          blok: res.data.stories,
+          allProjects: res.data.stories
         }
-      ]
+      })
+  },
+  computed: {
+    projects () {
+      return this.allProjects.filter(
+        project => project.content.component === 'project'
+      )
+    },
+    pages () {
+      return this.blok.filter(page => page.content.component === 'page')
+    },
+    projectPage () {
+      return this.pages.filter(page => page.name === 'projects')
+    },
+    homePage () {
+      return this.pages.filter(page => page.name === 'Home')
     }
   }
 }

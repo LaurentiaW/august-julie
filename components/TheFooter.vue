@@ -34,7 +34,7 @@ export default {
 footer {
   position: relative;
   padding: 1rem;
-  background-color: rgba(227, 173, 155, 0.52);
+  background-color: var(--main-clr);
   color: var(--white);
   font-family: 'Abril Fatface', cursive;
   display: flex;

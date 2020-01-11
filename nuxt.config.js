@@ -47,7 +47,14 @@ export default {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    // '@nuxtjs/axios'
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: 'Z4bppbJclrhmkgaF1TCXhwtt',
+        cacheProvider: 'memory'
+      }
+    ]
   ],
   /*
    ** Axios module configuration

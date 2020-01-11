@@ -1,19 +1,15 @@
 <template>
   <div class="container">
-    <h2><Star /> About</h2>
+    <h2><Star /> {{ title }}</h2>
     <div class="content-wrapper">
-      <img src="/temp/about.png" alt="a photo of me, Carlijn Treep during a project">
+      <img :src="about_img" :alt="alt_text">
       <div class="text-wrapper">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi saepe fugiat alias similique eos, vel iure? Quam aliquam, quod fugiat, a doloribus non nam laboriosam amet exercitationem magnam soluta in.
-          <br><br>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi saepe fugiat alias similique eos, vel iure? Quam aliquam, quod fugiat, a doloribus non nam laboriosam amet exercitationem magnam soluta in.
+          {{ text_nl }}
         </p>
         <hr>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi saepe fugiat alias similique eos, vel iure? Quam aliquam, quod fugiat, a doloribus non nam laboriosam amet exercitationem magnam soluta in.
-          <br><br>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi saepe fugiat alias similique eos, vel iure? Quam aliquam, quod fugiat, a doloribus non nam laboriosam amet exercitationem magnam soluta in.
+          {{ text_en }}
         </p>
       </div>
     </div>
@@ -28,6 +24,23 @@ export default {
   components: {
     Star,
     TheCallToAction
+  },
+  asyncData (context) {
+    return context.app.$storyapi
+      .get('cdn/stories/about', {
+        version: 'draft'
+      })
+      .then((res) => {
+        // eslint-disable-next-line no-console
+        // console.log(res)
+        return {
+          title: res.data.story.name,
+          about_img: res.data.story.content.body[0].about,
+          alt_text: res.data.story.content.body[0].alt,
+          text_nl: res.data.story.content.body[1].text_nl,
+          text_en: res.data.story.content.body[1].text_en
+        }
+      })
   }
 }
 </script>
@@ -35,12 +48,21 @@ export default {
 <style lang="scss" scoped>
 .content-wrapper {
   display: flex;
+
   img {
     max-width: 400px;
+    height: 100%;
     padding: 1rem 1rem 1rem 0;
   }
   .text-wrapper {
     max-width: 500px;
+    p {
+      white-space: pre-line;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
 }
 </style>

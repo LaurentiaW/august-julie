@@ -27,7 +27,7 @@
     color: var(--dark-blue);
     position: absolute;
     right: 0;
-    bottom: -0.5rem;
+    bottom: -0.85rem;
   }
 }
 </style>

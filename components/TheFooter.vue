@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <span>&copy;2019 <span class="hide-on-small">With love XOXO</span> Carlijn <span class="hide-on-small"> Treep</span></span>
+    <span>&copy;2020 <span class="hide-on-small">With love XOXO</span> Carlijn <span class="hide-on-small"> Treep</span></span>
     <FavIcon :width="30" :height="30" />
     <div class="social-icons">
       <span class="hide-on-small">Connect with  me on:  </span>
